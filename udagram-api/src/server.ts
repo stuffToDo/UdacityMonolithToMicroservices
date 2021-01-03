@@ -11,7 +11,7 @@ import {V0_FEED_MODELS, V0_USER_MODELS} from './controllers/v0/model.index';
 
 (async () => {
   await sequelize.addModels(V0_FEED_MODELS);
-  await sequelize.addModels(V0_USER_MODELS);
+  await sequelize.addModels(V0_USER_MODELS);  
   await sequelize.sync();
 
   const app = express();
@@ -26,7 +26,7 @@ import {V0_FEED_MODELS, V0_USER_MODELS} from './controllers/v0/model.index';
       'X-Access-Token', 'Authorization',
     ],
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    origin: config.url,
+    origin: '*',
   }));
 
   app.use('/api/v0/', IndexRouter);
